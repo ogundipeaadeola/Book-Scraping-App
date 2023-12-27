@@ -8,6 +8,7 @@ on how to run the code and access the generated data.
 ### Clone the Repository
 
 1. Clone this repository to your local machine:
+   
    git clone https://github.com/ogundipeaadeola/Book-Scraping-App.git
 
 ### Running the Application
