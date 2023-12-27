@@ -1,6 +1,6 @@
 import requests
 import csv
-from bs4 import BeautifulSoup4
+from bs4 import BeautifulSoup
 import os
 
 def scrape_books_in_category(url):
@@ -12,7 +12,7 @@ def scrape_books_in_category(url):
         response = requests.get(current_url)
 
         if response.status_code == 200:
-            soup = BeautifulSoup4(response.content, 'html.parser')
+            soup = BeautifulSoup(response.content, 'html.parser')
             book_list = soup.find_all('article', class_='product_pod')
 
             for book in book_list:
@@ -41,7 +41,7 @@ def extract_book_details(url):
     response = requests.get(url)
 
     if response.status_code == 200:
-        soup = BeautifulSoup4(response.content, 'html.parser')
+        soup = BeautifulSoup(response.content, 'html.parser')
 
         upc = soup.find('th', string='UPC').find_next('td').get_text(strip=True)
         book_title = soup.find('h1').text.strip()
@@ -56,11 +56,11 @@ def extract_book_details(url):
         base_output_folder = 'Book Scraping Results'
 
         category_image_folder = os.path.join(base_output_folder, 'book images', category)
-        if not os.path.exists(category_image_folder):
-            os.makedirs(category_image_folder)
-
-        image_name = f"{book_title}.jpg"
+        image_name = f"{book_title.replace(' ', '_')}.jpg"
         image_path = os.path.join(category_image_folder, image_name)
+
+        os.makedirs(os.path.dirname(image_path), exist_ok=True)  # Create folders recursively if they don't exist
+
         download_image(image_url, image_path)
         
     csv_file_path = os.path.join(base_output_folder, f"{category}.csv")
