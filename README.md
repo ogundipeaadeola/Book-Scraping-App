@@ -21,8 +21,9 @@ on how to run the code and access the generated data.
 
    python3 -m venv <environment name>
 4. Install Dependencies
+   
    pip install -r requirements.txt
-6. Run the following command:
+5. Run the following command:
    
    python3 Market_Analysis_Program.py
 
