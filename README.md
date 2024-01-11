@@ -19,7 +19,7 @@ on how to run the code and access the generated data.
    cd path/to/Book-Scraping-App
 3. Create a virtual environment:
 
-   python3 -m venv <environment name>
+   python3 -m venv env
 4. Install Dependencies
    
    pip install -r requirements.txt
