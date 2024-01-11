@@ -17,7 +17,12 @@ on how to run the code and access the generated data.
 2. Navigate to the project directory:
   
    cd path/to/Book-Scraping-App
-3. Run the following command:
+3. Create a virtual environment:
+
+   python3 -m venv <environment name>
+4. Install Dependencies
+   pip install -r requirements.txt
+6. Run the following command:
    
    python3 Market_Analysis_Program.py
 
